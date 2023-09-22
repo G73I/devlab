@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  DevLabBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: devlab7777777greenfrog
+Outputs:
+  BucketName:
+    Value: !Ref DevLabBucket

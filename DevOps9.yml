@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  recsvpc:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      TemplateURL: 'https://deblab7777777.s3.amazonaws.com/recsvpc.yml'
+      TimeoutInMinutes: '20'
+  
+  ecsnginx:
+    Type: 'AWS::CloudFormation::Stack'
+    DependsOn: recsvpc
+    Properties:
+      TemplateURL: 'https://deblab7777777.s3.amazonaws.com/ecsnginx.yml'
+      TimeoutInMinutes: '20'
+         
+  bucket:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      TemplateURL: 'https://deblab7777777.s3.amazonaws.com/bucket.yml'
+      TimeoutInMinutes: '20'
+
+  crole:
+    Type: 'AWS::CloudFormation::Stack'
+    DependsOn: ecsnginx
+    Properties:
+      TemplateURL: 'https://deblab7777777.s3.amazonaws.com/crole.yml'
+      TimeoutInMinutes: '20'
